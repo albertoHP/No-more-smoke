@@ -11,6 +11,16 @@ package Screens;
  */
 public class InformationScreen extends javax.swing.JFrame {
 MiConsumptionScreen pantallaConsumo;
+String usuarioLogeado;
+
+    public String getUsuarioLogeado() {
+        return usuarioLogeado;
+    }
+
+    public void setUsuarioLogeado(String usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
+
     /**
      * Creates new form InformationScreen
      */
@@ -35,6 +45,10 @@ MiConsumptionScreen pantallaConsumo;
         popupMenu1 = new java.awt.PopupMenu();
         popupMenu2 = new java.awt.PopupMenu();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        info = new javax.swing.JTextArea();
+        pregunta = new java.awt.Label();
+        jLabel1 = new javax.swing.JLabel();
 
         jMenu3.setText("jMenu3");
 
@@ -57,19 +71,46 @@ MiConsumptionScreen pantallaConsumo;
             }
         });
 
+        info.setColumns(20);
+        info.setRows(5);
+        info.setFocusable(false);
+        jScrollPane1.setViewportView(info);
+
+        pregunta.setAlignment(java.awt.Label.CENTER);
+        pregunta.setText("¿Cuantos cigarros ha consumido hoy?");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\alberto\\Desktop\\salud.png")); // NOI18N
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addComponent(pregunta, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(266, Short.MAX_VALUE)
+                .addGap(50, 50, 50)
+                .addComponent(pregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -79,6 +120,8 @@ MiConsumptionScreen pantallaConsumo;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 pantallaConsumo = new MiConsumptionScreen();
+pantallaConsumo.setUsuarioLogeado(usuarioLogeado);
+pantallaConsumo.aviso.setText("Estas logeado como: "+pantallaConsumo.getUsuarioLogeado());
 pantallaConsumo.show();
 this.hide();       
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -119,13 +162,17 @@ this.hide();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextArea info;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
     private java.awt.PopupMenu popupMenu1;
     private java.awt.PopupMenu popupMenu2;
+    public java.awt.Label pregunta;
     // End of variables declaration//GEN-END:variables
 }

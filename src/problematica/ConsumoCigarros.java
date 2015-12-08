@@ -27,9 +27,10 @@ public class ConsumoCigarros {
 	 * 
 	 * @param nombreArchivo
 	 */
-	public void getInformacion(String nombreArchivo) {
+	public String getInformacion(String nombreArchivo) {
 		// TODO - implement ConsumoCigarros.getInformacion
-		throw new UnsupportedOperationException();
+		informacion = new Informacion();
+                return informacion.setInformacionVisible(nombreArchivo);
 	}
 
 	/**
@@ -38,7 +39,7 @@ public class ConsumoCigarros {
 	 * @param nombreArchivo
 	 */
 	public void modificarConsumo(String cant, String nombreArchivo) {
-		// TODO - implement ConsumoCigarros.modificarConsumo
-		throw new UnsupportedOperationException();
+		cig = new Cigarros(cant, nombreArchivo);
+                cig.addCigarro();
 	}
 }

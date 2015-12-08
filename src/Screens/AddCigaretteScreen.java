@@ -5,6 +5,8 @@
  */
 package Screens;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import problematica.Usuario;
 
@@ -179,13 +181,41 @@ String usuarioLogeado;
     
     }//GEN-LAST:event_cigActionPerformed
 
+    public static boolean validarIngreso(String r){
+        /*SE COMPRUEBA QUE SE HAYAN INGRESADO NUMEROS Y NO LETRAS*/
+           // Establecer el patron
+    Pattern p = Pattern.compile("[0-9]");
+
+    // Asociar el string al patron
+    Matcher m = p.matcher(r);
+
+   // Comprobar si encaja
+   return m.matches();
+    
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println(usuarioLogeado);
+        
+        if(validarIngreso(cig.getText())){
+            user = new Usuario();
+        
+        user.addCigarros(cig.getText(), usuarioLogeado);
+        
+        
+        
+        
+       /*TRASPASO DE INFORMACION A LA VENTANA DE MENU Y POSTERIOR SETEO*/ 
         pantallaMenu = new MenuScreen();
         pantallaMenu.setUsuarioLogeado(usuarioLogeado);
         pantallaMenu.aviso.setText("Esta logeado como: "+pantallaMenu.getUsuarioLogeado());
-     pantallaMenu.setVisible(true);
-     this.dispose();   // TODO add your handling code here:
+        pantallaMenu.setVisible(true);
+        this.dispose(); 
+        
+        }else{
+            JOptionPane.showOptionDialog(this, "Ingrese una cantidad correcta porfavor (maximo 9 por ingreso)", "Error", JOptionPane.ERROR_MESSAGE, JOptionPane.ERROR_MESSAGE, null, new Object[]{" Aceptar "},"Cancelar");
+            cig.setText("");
+        }
+          // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

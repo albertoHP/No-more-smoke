@@ -5,6 +5,8 @@
  */
 package Screens;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 import problematica.Usuario;
 
@@ -38,6 +40,7 @@ Usuario user;
         pass = new javax.swing.JPasswordField();
         label1 = new java.awt.Label();
         label2 = new java.awt.Label();
+        crearcuenta = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,10 +84,19 @@ Usuario user;
         getContentPane().add(label2);
         label2.setBounds(20, 120, 111, 20);
 
+        crearcuenta.setText("Crear cuenta");
+        crearcuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearcuentaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(crearcuenta);
+        crearcuenta.setBounds(140, 180, 110, 23);
+
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\alberto\\Desktop\\logoufro.png")); // NOI18N
         jLabel3.setText("jLabel3");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(120, -20, 270, 400);
+        jLabel3.setBounds(120, -20, 290, 400);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -108,7 +120,7 @@ Usuario user;
         user = new Usuario();
         pantallaMenu = new MenuScreen();
         
-        if(user.comprobarUsuario(usuario.getText())){
+        if(user.comprobarContraseña(usuario.getText(), pass.getText())){
             
             pantallaMenu.setUsuarioLogeado(usuario.getText());
             pantallaMenu.aviso.setText("Esta logeado como: "+pantallaMenu.getUsuarioLogeado());
@@ -120,11 +132,33 @@ Usuario user;
             
         }else{
             JOptionPane.showOptionDialog(this, "La contraseña o nombre de usuario no coinciden", "Error", JOptionPane.ERROR_MESSAGE, JOptionPane.ERROR_MESSAGE, null, new Object[]{" Cancelar "},"Cancelar");
-        usuario.setText("");
-        pass.setText("");
+            usuario.setText("");
+            pass.setText("");
         }
     
     }//GEN-LAST:event_loginActionPerformed
+
+    private void crearcuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearcuentaActionPerformed
+        user = new Usuario();
+        pantallaMenu = new MenuScreen();
+            
+        if(usuario.getText().equals("") || pass.getText().equals("")){
+            JOptionPane.showOptionDialog(this, "Llene los campos porfavor", "Error", JOptionPane.ERROR_MESSAGE, JOptionPane.ERROR_MESSAGE, null, new Object[]{" Cancelar "},"Cancelar");
+            usuario.setText(null);
+            pass.setText(null);
+        }else{  
+            if(user.comprobarUsuarioExistente(usuario.getText())){
+                JOptionPane.showOptionDialog(this, "¡El usuario ya existe!", "Error", JOptionPane.ERROR_MESSAGE, JOptionPane.ERROR_MESSAGE, null, new Object[]{" Cancelar "},"Cancelar");
+                usuario.setText(null);
+                pass.setText(null);            
+            }else{
+           user.crearUsuario(usuario.getText(),pass.getText());
+           JOptionPane.showOptionDialog(this, "¡Se ha creado la cuenta!", "¡Exitoso!", JOptionPane.INFORMATION_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" Aceptar"},"Cancelar");
+            }
+            }
+            
+        
+    }//GEN-LAST:event_crearcuentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,11 +196,12 @@ Usuario user;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton crearcuenta;
     private javax.swing.JLabel jLabel3;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private javax.swing.JButton login;
-    private javax.swing.JPasswordField pass;
-    private javax.swing.JTextField usuario;
+    public javax.swing.JPasswordField pass;
+    public javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 }

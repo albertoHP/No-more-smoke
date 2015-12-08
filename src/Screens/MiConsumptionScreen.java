@@ -5,6 +5,8 @@
  */
 package Screens;
 
+import problematica.Usuario;
+
 /**
  *
  * @author alberto
@@ -14,6 +16,7 @@ MenuScreen pantallaMenu;
 GraphicsScreen pantallaGraficos;
 InformationScreen pantallaInfo;
 String usuarioLogeado;
+Usuario user;
 
     public String getUsuarioLogeado() {
         return usuarioLogeado;
@@ -151,6 +154,10 @@ this.hide();// TODO add your handling code here:
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 pantallaInfo = new InformationScreen();
+user = new Usuario();
+pantallaInfo.setUsuarioLogeado(usuarioLogeado);
+pantallaInfo.pregunta.setText("Te contamos:");
+pantallaInfo.info.setText(user.getInformacion(usuarioLogeado));
 pantallaInfo.show();
 this.hide();// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
