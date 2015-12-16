@@ -11,11 +11,20 @@ package Screens;
  */
 public class GraphicsScreen extends javax.swing.JFrame {
 MiConsumptionScreen pantallaConsumo;
+String usuarioLogeado;
     /**
      * Creates new form GraphicsScreen
      */
     public GraphicsScreen() {
         initComponents();
+    }
+
+    public String getUsuarioLogeado() {
+        return usuarioLogeado;
+    }
+
+    public void setUsuarioLogeado(String usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
     }
 
     /**
@@ -28,8 +37,11 @@ MiConsumptionScreen pantallaConsumo;
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        grafico = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -38,19 +50,28 @@ MiConsumptionScreen pantallaConsumo;
             }
         });
 
+        grafico.setIcon(new javax.swing.ImageIcon("C:\\Users\\Public\\nms\\grafico\\foto.jpg")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(301, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(grafico, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(266, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
+                .addComponent(grafico, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -60,6 +81,8 @@ MiConsumptionScreen pantallaConsumo;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 pantallaConsumo = new MiConsumptionScreen();
+pantallaConsumo.setUsuarioLogeado(usuarioLogeado);
+pantallaConsumo.aviso.setText("Estas logeado como: "+pantallaConsumo.getUsuarioLogeado());
 pantallaConsumo.show();
 this.hide();// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -100,6 +123,7 @@ this.hide();// TODO add your handling code here:
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel grafico;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

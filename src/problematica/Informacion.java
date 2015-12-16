@@ -50,49 +50,49 @@ public class Informacion {
              
             pw.print(nombreArchivo+", usted lleva un total de "+cantCig+" cigarros consumidos desde su registro._");
             
-            /*CIGARROS POR MES*/
+            /*CIGARROS POR D*/
             for(int i=0; i<datos.size();i++){
-                 pw.print("Mes"+(i+1)+": Para este mes usted lleva un total de "+datos.get(i).get(0)+" cigarros consumidos (Fecha "+datos.get(i).get(1)+"/"+datos.get(i).get(2)+"). ");
+                 pw.print("Dia"+(i+1)+": Para este dia usted lleva un total de "+datos.get(i).get(0)+" cigarros consumidos (Fecha "+datos.get(i).get(1)+"/"+datos.get(i).get(2)+"/"+datos.get(i).get(3)+"). ");
                     
             }
             pw.print("-");
             
-            /*PROMEDIO DE CIGARROS POR MES*/
+            /*PROMEDIO DE CIGARROS POR DIA*/
             
             double promedioCigMes=0;
             promedioCigMes= cantCig/datos.size();
-            pw.print("Hasta la fecha lleva un consumo promedio de "+promedioCigMes+" cigarros mensuales.;");
+            pw.print("Hasta la fecha lleva un consumo promedio de "+promedioCigMes+" cigarros diarios.;");
           
             
             /*GASTO EN CIGARROS SEGUN EL PROMEDIO MENSUAL*/
             
             double gastoCig=0;
             gastoCig= promedioCigMes*110;
-            pw.print("Hasta la fecha lleva un gasto mensual promedio de $"+gastoCig+", en cigarros.+");
+            pw.print("Hasta la fecha lleva un gasto diario promedio de $"+gastoCig+", en cigarros.+");
             
              /*INFORMACION DE SALUD SEGUN EL PROMEDIO MENSUAL*/
             
             if(promedioCigMes>=0 && promedioCigMes<=5){
-            pw.print("Usted tiene un consumo de entre 0 y 5 cigarros mensuales, los riesgos a los que usted se enfrenta no son tantos.!");
+            pw.print("Usted tiene un consumo de entre 0 y 5 cigarros diarios, los riesgos a los que usted se enfrenta no son tantos.!");
             }else{
                 if(promedioCigMes>5 && promedioCigMes<=10){
-                    pw.print("Usted tiene un consumo de entre 6 y 10 cigarros mensuales, los riesgos a los que usted se enfrenta ya abarcan cansancio.!");
+                    pw.print("Usted tiene un consumo de entre 6 y 10 cigarros diarios, los riesgos a los que usted se enfrenta ya abarcan cansancio.!");
                 }else{
                     if(promedioCigMes>10 && promedioCigMes<=15){
-                        pw.print("Usted tiene un consumo de entre 11 y 15 cigarros mensuales, los riesgos a los que usted se enfrenta a sentir posible necesidad.!"); 
+                        pw.print("Usted tiene un consumo de entre 11 y 15 cigarros diarios, los riesgos a los que usted se enfrenta a sentir posible necesidad.!"); 
                         
                     }else{
                          if(promedioCigMes>15 && promedioCigMes<=20){
-                         pw.print("Usted tiene un consumo de entre 16 y 20 cigarros mensuales, los riesgos a los que usted se enfrenta ya abarcan dolores de cabeza, cansancio y necesidad de fumar.!");
+                         pw.print("Usted tiene un consumo de entre 16 y 20 cigarros diarios, los riesgos a los que usted se enfrenta ya abarcan dolores de cabeza, cansancio y necesidad de fumar.!");
                          }else{
                               if(promedioCigMes>20 && promedioCigMes<=30){
-                             pw.print("Usted tiene un consumo de entre 21 y 30 cigarros mensuales, los riesgos a los que usted se enfrenta ya abarcan posibles mareos, y hablamos directamente de una adiccion.!");
+                             pw.print("Usted tiene un consumo de entre 21 y 30 cigarros diarios, los riesgos a los que usted se enfrenta ya abarcan posibles mareos, y hablamos directamente de una adiccion.!");
                               }else{
                                   if(promedioCigMes>30 && promedioCigMes<=40){
-                                      pw.print("Usted tiene un consumo de entre 31 y 40 cigarros mensuales, ya hablamos de 2 cajetillas mensuales, usted se puede ver enfrentado a un infarto cere.!");
+                                      pw.print("Usted tiene un consumo de entre 31 y 40 cigarros diarios, ya hablamos de 2 cajetillas mensuales, usted se puede ver enfrentado a un infarto cere.!");
                                   }else{
                                      if(promedioCigMes>40){
-                                        pw.print("Usted tiene un consumo mayor a 40 cigarros mensuales, hablamos de mas de 2 cajetillas mensuales, los riesgos a los que usted se enfrenta son infartos.!");  
+                                        pw.print("Usted tiene un consumo mayor a 40 cigarros diarios, hablamos de mas de 2 cajetillas mensuales, los riesgos a los que usted se enfrenta son infartos.!");  
                                      }
                                   }
                               }
@@ -167,6 +167,7 @@ public class Informacion {
                 
                 return lineaOrdenada;
                 }catch(Exception e){
+                    System.out.println("hola");
                     return null;
                 }
 	}

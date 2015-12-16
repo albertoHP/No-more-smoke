@@ -82,10 +82,10 @@ String usuarioLogeado;
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\alberto\\Desktop\\cenicero.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cenicero.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\alberto\\Desktop\\Cigarette-icon.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Cigarette-icon.png"))); // NOI18N
 
         aviso.setText("label1");
 

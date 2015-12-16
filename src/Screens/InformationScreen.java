@@ -79,7 +79,7 @@ String usuarioLogeado;
         pregunta.setAlignment(java.awt.Label.CENTER);
         pregunta.setText("¿Cuantos cigarros ha consumido hoy?");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\alberto\\Desktop\\salud.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salud.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

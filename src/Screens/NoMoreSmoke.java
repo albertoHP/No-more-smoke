@@ -24,6 +24,8 @@ public class NoMoreSmoke {
         usersFolder.mkdir();
         File infoFolder = new File("c:\\users\\public\\nms\\info");
         infoFolder.mkdir();
+         File graphicFolder = new File("c:\\users\\public\\nms\\grafico");
+         graphicFolder.mkdir();
         
         /*SETEO DE PANTALLA PRINCIPAL*/
         LoginScreen noMoreSmoke = new LoginScreen();

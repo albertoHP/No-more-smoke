@@ -93,7 +93,7 @@ Usuario user;
         getContentPane().add(crearcuenta);
         crearcuenta.setBounds(140, 180, 110, 23);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\alberto\\Desktop\\logoufro.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoufro.png"))); // NOI18N
         jLabel3.setText("jLabel3");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(120, -20, 290, 400);

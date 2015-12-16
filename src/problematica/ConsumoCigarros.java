@@ -16,11 +16,12 @@ public class ConsumoCigarros {
 
 	/**
 	 * 
-	 * @param nombreArchivo
+	 * definir tipo de metodo
 	 */
 	public void getGraficos(String nombreArchivo) {
 		// TODO - implement ConsumoCigarros.getGraficos
-		throw new UnsupportedOperationException();
+		graficos = new Graficos ();
+                 graficos.setGraficoVisible(nombreArchivo);
 	}
 
 	/**

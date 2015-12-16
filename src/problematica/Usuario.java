@@ -97,13 +97,11 @@ public class Usuario {
         
         
         
-	/**
-	 * consumoUsuario.getGrafico;
-	 * @param userName
-	 */
+	// Hay que definir tipo de metodo
 	public void getGraficos(String userName) {
 		// TODO - implement User.getGraficos
-		throw new UnsupportedOperationException();
+		consumoUsuario = new ConsumoCigarros();
+                consumoUsuario.getGraficos(userName);
 	}
 
         

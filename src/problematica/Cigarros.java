@@ -186,15 +186,14 @@ public class Cigarros {
             
             int cont=0;
             int sumaAux= Integer.parseInt(datos[0][0]);
-            String mesActual=datos[0][2],anoActual=datos[0][3];
+            
             datosfiltrados.add(new ArrayList<String>());
-            datosfiltrados.get(cont).add("");
-            datosfiltrados.get(cont).add("");
-            datosfiltrados.get(cont).add("");
-        
+            datosfiltrados.get(cont).add(datos[0][0]);
+            datosfiltrados.get(cont).add(datos[0][1]);
+            datosfiltrados.get(cont).add(datos[0][2]);
+            datosfiltrados.get(cont).add(datos[0][3]);
             
             
-            for(int i=0; i<datos.length-1; i++){
                 
                 /* DENTRO DE ESTE CICLO RECORREMOS TODOS LOS DATOS ENTREGADOS POR EL ARCHIVO LEIDO ARRIBA,
                 PARA POSTERIORMENTE COMPARAR EL AÑO Y LUEGO EL MES Y SI COINCIDEN LO AGREGAMOS AL ARRAY
@@ -202,30 +201,69 @@ public class Cigarros {
                 Y SE PUEDE CREAR INFORMACION POR MES Y/O AÑO
                 
                 */
+           for(int i=0; i<cigarros.length-1; i++){
+                
+                
                     if(datos[i][3].equals(datos[i+1][3])){
                         if(datos[i][2].equals(datos[i+1][2])){
-                            if(mesActual.equals(datos[i][2])==false || anoActual.equals(datos[i][3])==false ){
+                            if(datos[i][1].equals(datos[i+1][1])){
+                                sumaAux= sumaAux + Integer.parseInt(datos[i+1][0]);
+                            datosfiltrados.get(cont).set(0, Integer.toString(sumaAux));
+                            datosfiltrados.get(cont).set(1, datos[i][1]);
+                            datosfiltrados.get(cont).set(2, datos[i][2]);
+                            datosfiltrados.get(cont).set(3, datos[i][3]);
+                           
+                                //cont++;
+                                //sumaAux=Integer.parseInt(datos[i][0]);
+                                //datosfiltrados.add(new ArrayList<String>());
+                                //datosfiltrados.get(cont).add("");
+                                //datosfiltrados.get(cont).add("");
+                                //datosfiltrados.get(cont).add("");
+                            }else{
                                 cont++;
-                                sumaAux=Integer.parseInt(datos[i][0]);
+                                sumaAux=Integer.parseInt(datos[i+1][0]);;
                                 datosfiltrados.add(new ArrayList<String>());
                                 datosfiltrados.get(cont).add("");
                                 datosfiltrados.get(cont).add("");
                                 datosfiltrados.get(cont).add("");
-                            }
+                                datosfiltrados.get(cont).add("");
                                 
-                            sumaAux= sumaAux + Integer.parseInt(datos[i+1][0]);
-                            datosfiltrados.get(cont).set(0, Integer.toString(sumaAux));
-                            datosfiltrados.get(cont).set(1, datos[i][2]);
-                            datosfiltrados.get(cont).set(2, datos[i][3]);
-                            mesActual=datos[i][2];
-                            anoActual=datos[i][3];
-                            
-                            
+                                datosfiltrados.get(cont).set(0, Integer.toString(sumaAux));
+                                datosfiltrados.get(cont).set(1, datos[i+1][1]);
+                            datosfiltrados.get(cont).set(2, datos[i+1][2]);
+                            datosfiltrados.get(cont).set(3, datos[i+1][3]);
+                            } 
+                        }else{
+                            cont++;
+                                sumaAux=Integer.parseInt(datos[i+1][0]);;
+                                datosfiltrados.add(new ArrayList<String>());
+                                datosfiltrados.get(cont).add("");
+                                datosfiltrados.get(cont).add("");
+                                datosfiltrados.get(cont).add("");
+                                datosfiltrados.get(cont).add("");
+                                datosfiltrados.get(cont).set(0, Integer.toString(sumaAux));
+                            datosfiltrados.get(cont).set(1, datos[i+1][1]);
+                            datosfiltrados.get(cont).set(2, datos[i+1][2]);
+                            datosfiltrados.get(cont).set(3, datos[i+1][3]);
                         }
+                    }else{
+                                cont++;
+                                sumaAux=Integer.parseInt(datos[i+1][0]);
+                                
+                                datosfiltrados.add(new ArrayList<String>());
+                                datosfiltrados.get(cont).add("");
+                                datosfiltrados.get(cont).add("");
+                                datosfiltrados.get(cont).add("");
+                                datosfiltrados.get(cont).add("");
+                                
+                                datosfiltrados.get(cont).set(0, Integer.toString(sumaAux));
+                            datosfiltrados.get(cont).set(1, datos[i+1][1]);
+                            datosfiltrados.get(cont).set(2, datos[i+1][2]);
+                            datosfiltrados.get(cont).set(3, datos[i+1][3]);
                     }
                        
                 
-            }  
+            } 
          
          
             
