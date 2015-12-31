@@ -25,6 +25,65 @@ public class Informacion {
 	 * 
 	 * @param cantCigarros
 	 */
+    
+    
+        public double getPromedioCig(String nombreArchivo){
+          
+      File archivo = null;
+      FileReader fr = null;
+      BufferedReader br = null;
+ 
+      try {
+         // Apertura del fichero y creacion de BufferedReader para poder
+         // hacer una lectura comoda (disponer del metodo readLine()).
+         archivo = new File ("c:/users/public/nms/info/"+nombreArchivo+".txt");
+         fr = new FileReader (archivo);
+         br = new BufferedReader(fr);
+ 
+         
+         
+         
+         // Lectura del fichero
+         String linea;
+         linea=br.readLine();
+         
+                int n2 = linea.indexOf('-');
+                int n3 = linea.indexOf(';');
+                
+                
+                String linea2 = linea.substring(n2+1,n3);
+                
+                int n = linea2.indexOf('.');
+                
+                String promedioCigarrosMensuales = linea2.substring(44,n);
+                
+                
+         return Integer.parseInt(promedioCigarrosMensuales);
+         
+         
+      }catch(Exception e){
+         e.printStackTrace();
+         return 0;
+      }finally{
+         // En el finally cerramos el fichero, para asegurarnos
+         // que se cierra tanto si todo va bien como si salta 
+         // una excepcion.
+         try{                    
+            if( null != fr ){   
+               fr.close();     
+            }                  
+         }catch (Exception e2){ 
+            e2.printStackTrace();
+         }
+      }
+      
+      
+        }
+    
+        
+        
+        
+    
 	private void createInformacion(ArrayList<ArrayList<String>> datos, String nombreArchivo) {
 		/*DATOS ES UN ARRAY QUE CONTIENE 3 COLUMNAS(CIGARROS, MES Y AÑO)
                  Y TIENE TANTAS FILAS COMO MESES Y AÑOS DIFERENTES HAYAN
@@ -143,11 +202,14 @@ public class Informacion {
 		// TODO - implement Informacion.setInformacionVisible
 		cig = new Cigarros("",nombreArchivo);
                 createInformacion(cig.getTotalCigarros(),nombreArchivo);
-                
+                File archivo = null;
+                FileReader fr = null;
+                BufferedReader br = null;
+      
                 try{
-                File archivo = new File ("c:/users/public/nms/info/"+nombreArchivo+".txt");
-                FileReader  fr = new FileReader (archivo);
-                BufferedReader br = new BufferedReader(fr);
+                archivo = new File ("c:/users/public/nms/info/"+nombreArchivo+".txt");
+                fr = new FileReader (archivo);
+                br = new BufferedReader(fr);
                 String linea;
                 linea=br.readLine();
                 
@@ -162,14 +224,23 @@ public class Informacion {
                 String gastoCigarrosMensuales = linea.substring(n3+1,n4);
                 String infoSalud = linea.substring(n4+1,n5);
                 
-                
                 String lineaOrdenada = totalCigarros+"\n"+cigarrosMensuales+"\n"+promedioCigarrosMensuales+"\n"+gastoCigarrosMensuales+"\n"+infoSalud;
                 
                 return lineaOrdenada;
                 }catch(Exception e){
                     System.out.println("hola");
                     return null;
-                }
+                }finally{
+         // En el finally cerramos el fichero, para asegurarnos
+         // que se cierra tanto si todo va bien como si salta 
+         // una excepcion.
+         try{                    
+            if( null != fr ){   
+               fr.close();     
+            }                  
+         }catch (Exception e2){ 
+            e2.printStackTrace();
+         }}
 	}
 
 }

@@ -36,6 +36,8 @@ public class Graficos {
         //como su nombre lo indica el primer valor sera asignado al eje X
         //y el segundo al eje Y
          
+        series.add(0,0);
+        
         for(int i=0; i<datos.size();i++){
                          
         series.add((i+1), Integer.parseInt(datos.get(i).get(0)));

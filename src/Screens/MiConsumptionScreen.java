@@ -5,6 +5,7 @@
  */
 package Screens;
 
+import problematica.Informacion;
 import problematica.Usuario;
 
 /**
@@ -156,9 +157,24 @@ this.hide();// TODO add your handling code here:
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 pantallaInfo = new InformationScreen();
 user = new Usuario();
+Informacion info = new Informacion();
 pantallaInfo.setUsuarioLogeado(usuarioLogeado);
 pantallaInfo.pregunta.setText("Te contamos:");
 pantallaInfo.info.setText(user.getInformacion(usuarioLogeado));
+
+
+if(info.getPromedioCig(usuarioLogeado)<5){
+    pantallaInfo.semaforo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/verde.png")));
+}else{
+    if(info.getPromedioCig(usuarioLogeado)>=5 && info.getPromedioCig(usuarioLogeado)<10){
+        pantallaInfo.semaforo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/amarillo.png")));
+    }else{
+        if(info.getPromedioCig(usuarioLogeado)>=10){
+            pantallaInfo.semaforo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/rojo.png")));
+        }
+    }
+}
+
 pantallaInfo.show();
 this.hide();// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed

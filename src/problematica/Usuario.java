@@ -28,13 +28,26 @@ public class Usuario {
         
         
         public boolean comprobarUsuarioExistente(String user){
+            File archivo = null;
+            FileReader fr = null;
             try{
-                File archivo = new File ("c:/users/public/nms/users/"+user+".txt");
-                FileReader  fr = new FileReader (archivo);
+                archivo = new File ("c:/users/public/nms/users/"+user+".txt");
+                fr = new FileReader (archivo);
                 return true;
             }catch(Exception e){
                 return false;
-            }
+            }finally{
+         // En el finally cerramos el fichero, para asegurarnos
+         // que se cierra tanto si todo va bien como si salta 
+         // una excepcion.
+         try{                    
+            if( null != fr ){   
+               fr.close();     
+            }                  
+         }catch (Exception e2){ 
+            e2.printStackTrace();
+         }
+      }
         }
 	
         
@@ -70,10 +83,13 @@ public class Usuario {
 	 * @param contraseña
 	 */
 	public boolean comprobarContraseña(String user, String contraseña) {
+            File archivo = null;
+            FileReader fr = null;
+            BufferedReader br = null;
             try{
-		File archivo = new File ("c:/users/public/nms/users/"+user+".txt");
-                FileReader  fr = new FileReader (archivo);
-                BufferedReader br = new BufferedReader(fr);
+		 archivo = new File ("c:/users/public/nms/users/"+user+".txt");
+                  fr = new FileReader (archivo);
+                 br = new BufferedReader(fr);
                 String linea;
                 linea=br.readLine();
                 
@@ -88,7 +104,19 @@ public class Usuario {
                 
             }catch(Exception e){
             return false;
-        }  
+        }finally{
+         // En el finally cerramos el fichero, para asegurarnos
+         // que se cierra tanto si todo va bien como si salta 
+         // una excepcion.
+         try{                    
+            if( null != fr ){   
+               fr.close();     
+            }                  
+         }catch (Exception e2){ 
+            e2.printStackTrace();
+         }
+      }
+            
 	}
 
         

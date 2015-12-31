@@ -44,11 +44,12 @@ String usuarioLogeado;
         menu2 = new java.awt.Menu();
         popupMenu1 = new java.awt.PopupMenu();
         popupMenu2 = new java.awt.PopupMenu();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         info = new javax.swing.JTextArea();
         pregunta = new java.awt.Label();
-        jLabel1 = new javax.swing.JLabel();
+        semaforo = new javax.swing.JLabel();
 
         jMenu3.setText("jMenu3");
 
@@ -62,7 +63,11 @@ String usuarioLogeado;
 
         popupMenu2.setLabel("popupMenu2");
 
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -79,27 +84,27 @@ String usuarioLogeado;
         pregunta.setAlignment(java.awt.Label.CENTER);
         pregunta.setText("¿Cuantos cigarros ha consumido hoy?");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salud.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        semaforo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ROJO.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jButton1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1)
-                            .addComponent(pregunta, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(semaforo, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(pregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,12 +112,12 @@ String usuarioLogeado;
                 .addGap(50, 50, 50)
                 .addComponent(pregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(semaforo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,7 +128,7 @@ pantallaConsumo = new MiConsumptionScreen();
 pantallaConsumo.setUsuarioLogeado(usuarioLogeado);
 pantallaConsumo.aviso.setText("Estas logeado como: "+pantallaConsumo.getUsuarioLogeado());
 pantallaConsumo.show();
-this.hide();       
+this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -164,9 +169,9 @@ this.hide();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextArea info;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
@@ -174,5 +179,6 @@ this.hide();
     private java.awt.PopupMenu popupMenu1;
     private java.awt.PopupMenu popupMenu2;
     public java.awt.Label pregunta;
+    public javax.swing.JLabel semaforo;
     // End of variables declaration//GEN-END:variables
 }

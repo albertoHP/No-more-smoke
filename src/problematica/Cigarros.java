@@ -52,12 +52,16 @@ public class Cigarros {
         */
 	public ArrayList<ArrayList<String>> getTotalCigarros() {
 		
+            File archivo = null;
+      FileReader fr = null;
+      BufferedReader br = null;
+            
 		try{
             
             /*SE BUSCA EL ARCHIVO*/
-         File archivo = new File ("c:/users/public/nms/users/"+this.archivo+".txt");
-         FileReader fr = new FileReader (archivo);
-         BufferedReader br = new BufferedReader(fr);
+         archivo = new File ("c:/users/public/nms/users/"+this.archivo+".txt");
+         fr = new FileReader (archivo);
+          br = new BufferedReader(fr);
  
          /*SE METE EN UN STRING LO QUE HAYA EN EL ARCHIVO*/
          String linea;
@@ -272,7 +276,21 @@ public class Cigarros {
              return datosfiltrados;
         }catch(Exception e){
             return null;
-        }
+        }finally{
+         // En el finally cerramos el fichero, para asegurarnos
+         // que se cierra tanto si todo va bien como si salta 
+         // una excepcion.
+         try{                    
+            if( null != fr ){   
+               fr.close();     
+            }                  
+         }catch (Exception e2){ 
+            e2.printStackTrace();
+         }
+      }
+                
+                
+                
 	}
         
         
